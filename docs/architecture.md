@@ -85,14 +85,13 @@ docs/
 
 ### 5.1 イメージ図
 
-<!-- ```mermaid
-flowchart LR
-  A[ユーザー] --> B[Next.js 画面]
-  B --> C[Route Handler / API]
-  C --> D[Supabase]
-  D --> E[(PostgreSQL)]
-
-''' -->
+```mermaid
+flowchart LR;
+  A[ユーザー] --> B[Next.js 画面];
+  B --> C[Route Handler / API];
+  C --> D[Supabase];
+  D --> E[(PostgreSQL)];
+```
 
 ---
 
