@@ -124,8 +124,12 @@ components/
 
 ---
 
-### 4.2 共通レイアウト
-- （今後追加）
+### 4.2 共通レイアウトコンポーネント
+
+- [Header](./layout/header.md)
+- [Sidebar](./layout/sidebar.md)
+- [AuthenticatedLayout](./layout/authenticated-layout.md)
+- [UserMenuModal](./layout/user-menu-modal.md)
 
 ---
 
