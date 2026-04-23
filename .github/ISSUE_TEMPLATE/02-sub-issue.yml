@@ -1,0 +1,79 @@
+name: "Sub Issue"
+description: "親Issue配下の個別作業を管理する子Issue"
+title: "[Sub] "
+labels:
+  - type: sub-issue
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 目的
+        このIssueは、親Issueに紐づく個別作業を管理するための子Issueです。
+        
+        - 子Issueは作業完了時に手動でクローズします
+        - PR本文では `refs #番号` で関連付ける運用を想定します
+
+  - type: input
+    id: parent
+    attributes:
+      label: 親Issue番号
+      description: 紐づく親Issueの番号を記載してください
+      placeholder: "例）#12"
+    validations:
+      required: true
+
+  - type: input
+    id: summary
+    attributes:
+      label: 作業概要
+      description: この子Issueで実施する作業内容
+      placeholder: 例）Buttonコンポーネントを実装する
+    validations:
+      required: true
+
+  - type: textarea
+    id: task-detail
+    attributes:
+      label: 作業内容
+      description: 実施内容を具体的に記載してください
+      placeholder: |
+        例）
+        - variant / size propsを定義する
+        - 共通Buttonとして再利用可能にする
+        - デザイン設計に合わせてスタイルを適用する
+    validations:
+      required: true
+
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: この作業を完了とみなす条件
+      placeholder: |
+        例）
+        - コンポーネントが実装されている
+        - 想定propsで表示確認できている
+        - 親Issueの画面で利用可能な状態になっている
+    validations:
+      required: true
+
+  - type: input
+    id: related-file
+    attributes:
+      label: 関連ファイル
+      description: 主に触るファイルや作成予定ファイル
+      placeholder: 例）src/components/ui/Button.tsx
+    validations:
+      required: false
+
+  - type: textarea
+    id: notes
+    attributes:
+      label: 補足
+      description: 注意点や依存関係があれば記載してください
+      placeholder: |
+        例）
+        - TaskCompleteButtonの再定義方針と整合を取る
+        - 先に共通カラー定義が必要
+    validations:
+      required: false

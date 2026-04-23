@@ -1,0 +1,97 @@
+name: "Parent Issue"
+description: "画面単位・機能単位の成果物を管理する親Issue"
+title: "[Parent] "
+labels:
+  - type: parent-issue
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## 目的
+        このIssueは、画面単位または機能単位の成果物を管理するための親Issueです。
+        
+        - 親Issueは PR マージ時にクローズします
+        - 子Issueは個別作業として別途作成し、作業完了時に手動クローズします
+
+  - type: input
+    id: summary
+    attributes:
+      label: 概要
+      description: この成果物で何を実現するかを簡潔に記載してください
+      placeholder: 例）タスク一覧画面を実装する
+    validations:
+      required: true
+
+  - type: textarea
+    id: background
+    attributes:
+      label: 背景
+      description: なぜこの画面 / 機能が必要か
+      placeholder: |
+        例）
+        - v1スコープに含まれているため
+        - タスク管理の中核画面であるため
+    validations:
+      required: true
+
+  - type: textarea
+    id: scope
+    attributes:
+      label: 対応範囲
+      description: このIssueで対応する範囲
+      placeholder: |
+        例）
+        - タスク一覧の表示
+        - 経験値表示UI
+        - 空状態UI
+        - 画面統合
+    validations:
+      required: true
+
+  - type: textarea
+    id: out-of-scope
+    attributes:
+      label: 対応しない範囲
+      description: 今回のIssueでは扱わない内容
+      placeholder: |
+        例）
+        - Firestore / Supabase本接続
+        - 通知機能
+        - v2想定の統計表示
+    validations:
+      required: false
+
+  - type: textarea
+    id: done
+    attributes:
+      label: 完了条件
+      description: このIssueを完了とみなす条件
+      placeholder: |
+        例）
+        - 画面の主要UIが実装されている
+        - 関連する子Issueが完了している
+        - 対応PRがdevにマージされている
+    validations:
+      required: true
+
+  - type: input
+    id: design-doc
+    attributes:
+      label: 関連ドキュメント
+      description: 詳細設計やADRなどの関連資料
+      placeholder: 例）docs/design/task-list-detail.md
+    validations:
+      required: false
+
+  - type: textarea
+    id: sub-issues
+    attributes:
+      label: 想定する子Issue
+      description: 作成予定の子Issueを列挙してください
+      placeholder: |
+        例）
+        - Buttonコンポーネント実装
+        - TaskCardコンポーネント実装
+        - 空状態UI実装
+    validations:
+      required: false
