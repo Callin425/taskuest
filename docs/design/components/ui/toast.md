@@ -11,8 +11,7 @@
 - エラー発生時の通知
 - 情報メッセージの通知
 
-本コンポーネントは、**短時間表示される通知UIの表示責務に限定**し、  
-通知の発火条件や業務ロジックそのものは持たせない。
+本コンポーネントは、**短時間表示される通知UIの表示責務に限定**し、通知の発火条件や業務ロジックそのものは持たせない。
 
 ---
 
@@ -33,6 +32,8 @@ src/components/ui/Toast/
 ├─ Toast.test.tsx
 └─ index.ts
 ```
+
+---
 
 ## 4. 責務
 
@@ -79,15 +80,17 @@ src/components/ui/Toast/
 | isOpen | `boolean` | ○ | 表示状態 |
 | onClose | `() => void` | △ | 閉じる操作時のイベント |
 | showCloseButton | `boolean` | △ | 閉じるボタンを表示するかどうか。デフォルトは `true` |
-| className | `string` | △ | 画面側で追加調整が必要な場合の拡張用クラス |
+| className | `string` | △ | 追加調整が必要な場合の拡張用クラス |
 
 ### 7.1 設計判断
 
 - `type` は v1 で必要になる最低限の種別に絞る
-- `variant` ではなく `type` とする  
-- `title` は現時点では持たせない  
-- 自動非表示時間はコンポーネント内で持たせない  
-- `isOpen` によって表示 / 非表示を制御する  
+- `variant` ではなく `type` とする
+- `title` は現時点では持たせない
+- 自動非表示時間はコンポーネント内で持たせない
+- `isOpen` によって表示 / 非表示を制御する
+- `showCloseButton=true` の場合は、原則として `onClose` を指定する
+- `onClose` が未指定の場合は、閉じるボタンを表示しない、または押下不可とする
 
 ---
 
@@ -103,8 +106,9 @@ src/components/ui/Toast/
 - `info` の場合、情報通知用の見た目を適用する
 
 ### 8.3 閉じる操作
-- `showCloseButton={true}` の場合、閉じるボタンを表示する
+- `showCloseButton=true` かつ `onClose` が指定されている場合、閉じるボタンを表示する
 - 閉じるボタン押下時は `onClose` を呼び出す
+- `onClose` が未指定の場合は、閉じる操作を提供しない
 
 ### 8.4 非表示時
 - `isOpen` が `false` の場合は描画しない、または非表示状態とする
@@ -138,7 +142,7 @@ src/components/ui/Toast/
 - `SuccessToast`
 - `ErrorToast`
 
-※ 必要になった時点で作成する
+※ 必要になった時点で作成する。
 
 ---
 
@@ -157,8 +161,9 @@ src/components/ui/Toast/
 - `isOpen=true` のときにメッセージが表示されること
 - `isOpen=false` のときに非表示であること
 - `type` に応じた表示が反映されること
-- `showCloseButton=true` のとき閉じるボタンが表示されること
+- `showCloseButton=true` かつ `onClose` 指定時に閉じるボタンが表示されること
 - 閉じるボタン押下時に `onClose` が呼ばれること
+- `onClose` 未指定時に閉じる操作を提供しないこと
 
 ### 13.2 テストしないこと
 - 業務ロジックに基づく通知表示判定
